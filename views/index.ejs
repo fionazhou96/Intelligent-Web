@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Marker Clustering</title>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 500px;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+
+</head>
+<body onload="getLocation()">
+<p>Click the button to get your coordinates.</p>
+<button onclick="getLocation()">Try It</button>
+<p id="demo"></p>
+<script>
+    var x = document.getElementById('demo');
+    var Position = null;
+
+    function showError(error) { switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break; }}
+            console.log('show')
+    console.log('show2', Position)
+
+    function initMap() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var lat=position.coords.latitude
+                var lon=position.coords.longitude
+                // console.log('show', position.coords.latitude);
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+
+                    zoom: 18,
+                    center: {lat:lat,lng: lon},
+                });
+
+                var marker = new google.maps.Marker({
+                    position: {lat:lat,lng: lon},
+                    draggable:true,
+                });
+                marker.setMap(map);
+
+                var infowindow = new google.maps.InfoWindow({
+                    content:"Hello World!"
+                });
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map,marker);
+                    console.log('vbjknb')
+                });
+
+                google.maps.event.addListener(marker,"dragend",function(event){
+                    console.log('drag')
+                    var mlat=marker.position.lat();
+                    var mlng=marker.position.lng();
+
+                    // center:{lat:marker.getPosition.coords.latitude,lng:marker.getPosition.coords.longitude}
+                    console.log(mlat,mlng)
+                });
+
+
+                // Add a marker clusterer to manage the markers.
+
+            }, showError);
+        } else {
+            x.innerHTML = 'Geolocation is not supported by this browser.'
+        }
+
+
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+
+    }
+
+        // Create an array of alphabetical characters used to label the markers.
+        // var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+
+
+        // Add a marker clusterer to manage the markers.
+        // var markerCluster = new MarkerClusterer(map, markers,
+        //     {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+
+</script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs3iLMC7PtL8BO71l8iJ_WqaUX1fiN-Xc&callback=initMap">
+</script>
+<div id="map"></div>
+</body>
+</html>
