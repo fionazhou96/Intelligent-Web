@@ -1,0 +1,378 @@
+body, div, p, form, label, ul, li, dl, dt, dd, ol, img, button, b, em, strong, small, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  font-style: normal;
+}
+body{
+  width:100%;
+  height:100%;
+  margin: 0 auto;
+  font-size: 26px;
+  margin-left: auto;
+  margin-right:auto;
+  text-align:center;
+  height: 100%;
+  /*background: -webkit-linear-gradient(left top, #68cab7, #3476cd); !* Safari 5.1 - 6.0 *!*/
+  /*background: -o-linear-gradient(bottom right, #68cab7, #3476cd); !* Opera 11.1 - 12.0 *!*/
+  /*background: -moz-linear-gradient(bottom right, #68cab7, #3476cd); !* Firefox 3.6 - 15 *!*/
+  /*background: linear-gradient(to bottom right, #68cab7, #3476cd); !* 标准的语法 *!*/
+  background-repeat: no-repeat  ;
+  background-attachment:fixed;
+  background-size: 100%;
+
+}
+.login {
+  text-align: center;
+}
+.welcome {
+  font-size: 3em;
+  color: #eee;
+  margin-top: 13%;
+  margin-bottom: 3%;
+}
+.login-inp {
+  margin: 0 30px 15px 30px;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  display: inline-block;
+  width: 230px;
+}
+.login-inp:hover {
+  background-color: #eeeeee2b;
+}
+.login-inp label {
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+}
+.login-inp:hover {
+  width: 250px;
+}
+.login-inp input {
+  line-height: 40px;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.login-inp a {
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 5px;
+}
+a, a.link:hover {
+  color: #666;
+}
+a, a.link {
+  color: #666;
+  text-decoration: none;
+  font-weight: 500;
+}
+.login-txt a {
+  color: #fff;
+  padding: 0 5px;
+}
+.login-txt a:hover {
+  color: #eeeeeeba;
+}
+.login-txt {
+  text-align: center;
+  color: #fff;
+}
+nav{
+  width:100%;
+  height:80px;
+  background:#00A2CA;
+  /*background: #000000;*/
+  margin:0 auto;
+  opacity:0.5;
+}
+nav h1{
+  display:inline-block;
+  padding:0 20px;
+  height:60px;
+  line-height:60px;
+  color:#FFF;
+  font-family:"\5FAE\8F6F\96C5\9ED1";
+  font-size:3rem;
+  float:left;
+
+}
+nav li{
+  display:inline-block;
+  padding:0 20px;
+  height:60px;
+  line-height:60px;
+  color:#FFF;
+  font-family:"\5FAE\8F6F\96C5\9ED1";
+  font-size:26px;
+}
+nav li a{
+  display:inline-block;
+  padding:0 20px;
+  height:60px;
+  line-height:60px;
+  color:#FFF;
+  font-family:"\5FAE\8F6F\96C5\9ED1";
+  font-size:26px;
+  float: bottom;
+}
+nav li a:hover{
+  background:#0095BB
+}
+
+.search-page{
+  width:80%;
+  margin-top: 3%;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 16px;
+}
+.dropdown{
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  width: 13%;
+  height:50px;
+  float: left;
+  margin: 0 30px 0 20%;
+  font-family:"\5FAE\8F6F\96C5\9ED1";
+  color:#fff;
+}
+
+.bar6 input {
+  border:2px solid #fff;
+  border-radius:5px 0 0 5px;
+  background:transparent;
+  color: #fff;
+  width:30%;
+  font-family:"\5FAE\8F6F\96C5\9ED1";
+  display:inline-block;
+  height:50px;
+  float: left;
+
+}
+.bar6 input::-webkit-input-placeholder {
+  font-family:"\5FAE\8F6F\96C5\9ED1";
+  color:#fff;
+}
+
+.bar6 button {
+  background:transparent;
+  border-radius:0 5px 5px 0;
+  width: 10%;
+  height:50px;
+  border: 2px solid #fff;
+  display: inline-block;
+  font-family:"\5FAE\8F6F\96C5\9ED1";
+  color:#fff;
+  margin: 0 30px 15px 0;
+  float: left;
+}
+.content-page{
+
+
+
+  position: relative;
+
+    margin-bottom:20px;
+
+    height:100%;
+
+}
+.footer{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  background:#985f0d;
+  opacity:0.8;
+}
+
+.footer li{
+  display:inline-block;
+  padding:0 20px;
+  height:60px;
+  line-height:60px;
+  font-family:"\5FAE\8F6F\96C5\9ED1";
+  font-size:3rem;
+
+}
+.footer li:hover{
+  background:#0095BB
+}
+.create {
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  /*background: linear-gradient(to bottom right, #68cab7, #3476cd); !* 标准的语法 *!*/
+
+}
+
+.create-tip {
+  font-size: 3.3rem;
+  color: #985f0d;
+  margin-top: 3%;
+    float: left;
+
+}
+.create-inp {
+  border-radius: 8px;
+  display: inline-block;
+  width: 30%;
+  height:50px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.create-inp label {
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  width:180px;
+}
+
+.create-inp input {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  height: 80px;
+  margin-left: 0;
+  border: 1px solid #fff;
+
+}
+.event-content{
+    width: 100%;
+    padding-top:8px;
+    padding-left: 2%;
+    font-size: 2rem;
+    float: left;
+    color: #666666;
+}
+.img-broad{
+    display:block;
+    height:100%;
+    width:100%;
+}
+.event-name {
+    position: relative;
+    diaplay:flex;
+    line-height: 2.5rem;
+    color: #666666;
+    font-size: 3rem;
+    font-max-size: 3rem;
+    font-min-size: 1.5rem;
+    float:left;
+    width: 30%;
+
+}
+.event-information{
+    padding-top: 10px;
+    width: 100%;
+    float: left;
+}
+.event-story{
+    width:100%;
+    float: bottom;
+    padding-left: 60%;
+}
+.event-href{
+
+
+}
+.form-group-label{
+    float: left;
+    font-family:"\5FAE\8F6F\96C5\9ED1";
+}
+.fa-times {
+    font-size: 15px;
+}
+.panel {
+    height: 200px;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+.panel-heading {
+    text-align: right;
+}
+/*加号*/
+.icon-add-50 {
+    position: relative;
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    border: 2px dashed #9a9ba3;
+    border-radius: 50%;
+}
+.icon-add-50:before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    left: 50%;
+    top: 50%;
+    margin-left: -15px;
+    margin-top: -1px;
+    background-color: #aaabb2;
+}
+.icon-add-50:after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 30px;
+    left: 50%;
+    top: 50%;
+    margin-left: -1px;
+    margin-top: -15px;
+    background-color: #aaabb2;
+}
+
+.updatepanel {
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.updatepanel .addbox {
+    vertical-align: middle;
+    height: 200px;
+    line-height: 200px;
+}
+
+#image {
+    overflow: hidden;
+}
+.panel-body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+label {
+    width: 100%;
+}
+.ibox-content{
+    width: 100%;
+}
+.story-information{
+    font-size:2rem;
+    float:left;
+
+}
+.loginbody{
+    width:100%;
+    height:100%;
+    text-align:center;
+    background: -webkit-linear-gradient(left top, #68cab7, #3476cd); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #68cab7, #3476cd); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #68cab7, #3476cd); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #68cab7, #3476cd); /* 标准的语法 */
+    background-repeat: no-repeat  ;
+    background-attachment:fixed;
+    background-size: 100%;
+
+}
+
+
