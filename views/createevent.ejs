@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="images/icons/icon-128px.png">
+    <meta name="msapplication-TileImage" content="images/icons/icon-72px.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 250px;
+            width:80%;
+            margin-left: 10%;
+            display:none;
+
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        function showmap(value){
+            // if(value==1){
+            document.getElementById("map").style.display = "block";
+            // }
+        }
+    </script>
+
+</head>
+<body onload="getLocation()">
+<p id="demo"></p>
+<script>
+    var x = document.getElementById('demo');
+    var Position = null;
+
+    function showError(error) { switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break; }}
+    console.log('show')
+    console.log('show2', Position)
+
+    function initMap() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var lat=position.coords.latitude
+                var lon=position.coords.longitude
+                // console.log('show', position.coords.latitude);
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+
+                    zoom: 18,
+                    center: {lat:lat,lng: lon},
+                });
+
+                var marker = new google.maps.Marker({
+                    position: {lat:lat,lng: lon},
+                    draggable:true,
+                });
+                marker.setMap(map);
+
+                var infowindow = new google.maps.InfoWindow({
+                    content:"Hello World!"
+                });
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map,marker);
+                    console.log('vbjknb')
+                });
+
+                google.maps.event.addListener(marker,"dragend",function(event){
+                    console.log('drag')
+                    var mlat=marker.position.lat();
+                    var mlng=marker.position.lng();
+
+                    // center:{lat:marker.getPosition.coords.latitude,lng:marker.getPosition.coords.longitude}
+                    console.log(mlat,mlng)
+                    //mlat,mlng为新的地址坐标
+                });
+
+
+                // Add a marker clusterer to manage the markers.
+
+            }, showError);
+        } else {
+            x.innerHTML = 'Geolocation is not supported by this browser.'
+        }
+
+
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+
+    }
+
+    // Create an array of alphabetical characters used to label the markers.
+    // var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    // Add some markers to the map.
+    // Note: The code uses the JavaScript Array.prototype.map() method to
+    // create an array of markers based on a given "locations" array.
+    // The map() method here has nothing to do with the Google Maps API.
+
+
+    // Add a marker clusterer to manage the markers.
+    // var markerCluster = new MarkerClusterer(map, markers,
+    //     {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+
+</script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs3iLMC7PtL8BO71l8iJ_WqaUX1fiN-Xc&callback=initMap">
+</script>
+<!--顶部栏-->
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            Welcome to Music Festival
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="Event">Event</a> </li>
+            <li><a href="Story">Story</a> </li>
+            <li><a href="">Your Profile</a> </li>
+            <li><a href="/signup" id="signup">Log out</a></li>
+        </ul>
+
+    </div>
+</div>
+<div class="container"style="width: 100%; background-color: #985f0d">
+    <form class="form-horizontal" style="width: 60%;margin-left: 20%;margin-top:2%;margin-bottom:2%;background-color: #fff">
+        <div class="form-group">
+            <h1 class="create-tip">Create Your Event</h1>
+        </div>
+        <div class="form-group">
+            <label class="form-group-label">Event name: </label>
+            <input type="text" class="form-control" name="event_name" placeholder="Event Name">
+        </div>
+        <div class="form-group">
+            <label class="form-group-label">Event Date: </label>
+            <input type="date" class="form-control" name="event_date" placeholder="Date">
+        </div>
+        <div class="form-group">
+            <label class="form-group-label">Event Location: </label>
+            <input type="button" class="btn btn-default" style="float: left" onclick="showmap(1)" value="Select Location">
+            <div id="map"></div>
+        </div>
+        <div class="form-group">
+            <label class="form-group-label">Location Description: </label>
+            <input type="text" class="form-control" name="event_location_description" placeholder="Location Description">
+        </div>
+        <div class="form-group">
+            <label class="form-group-label">Event Description: </label>
+            <textarea class="form-control" name="event_description" placeholder="Event Description" style="height: 150px"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-default" style="margin-bottom: 1%;">Submit</button>
+    </form>
+
+</div>
+
+
+
+<!--底部栏-->
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="background-color: #985f0d;opacity: 0.8;">
+    <div class="container-fluid">
+        <div class="footer">
+            <li><a href="event" style="color: #fff">Come back</a></li>
+
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

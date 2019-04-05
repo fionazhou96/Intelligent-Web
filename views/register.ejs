@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--/**-->
+<!--* HTML {@code register} is the web to to create a new user.-->
+<!--* @author Xuanyi Zhou-->
+<!--*-->
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="images/icons/icon-128px.png">
+    <meta name="msapplication-TileImage" content="images/icons/icon-72px.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function passwordCheck(){
+            var pwd1 = document.getElementById("login_password").value;
+            var pwd2 = document.getElementById("login_password_confirm").value;
+            if(pwd1!=pwd2){
+                alert("Password is different！");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+
+</head>
+<body class="loginbody">
+<div class="main">
+    <div class="login">
+        <div class="welcome">Account Register</div>
+        <form action="event" method="POST" >
+            <div class="login-form">
+                <div class="login-inp">
+                    <label>User name</label>
+                    <input type="text" class="form-control" name="login_name" autocomplete="off" />
+                </div>
+            </div>
+            <div>
+                <div class="login-inp">
+                    <label for="password" style="display:inline;">User Password: </label>
+                    <input type="text" class="form-control" id="login_password" style="display:inline;width:200px;"autocomplete="off" />
+                </div>
+            </div>
+            <div>
+                <div class="login-inp">
+                    <label for="password" style="display:inline;">Confirm Password: </label>
+                    <input type="text" class="form-control" id="login_password_confirm" style="display:inline;width:200px;"autocomplete="off" />
+                </div>
+            </div>
+
+        </form>
+        <div class="login-form">
+
+
+            <div>
+                <div class="login-inp">
+                    <a href="index" onclick="return passwordCheck() ">Register</a>
+                </div>
+            </div>
+            <div>
+                <div class="login-txt">
+                    <a href="index">Return to login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

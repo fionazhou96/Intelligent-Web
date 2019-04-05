@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--/**-->
+<!--* HTML {@code event} is the web to see all of events and search events though key words.-->
+<!--* @author Xuanyi Zhou-->
+<!--* This page can connect to createevent, storylist and logout page.-->
+<!--*/-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="images/icons/icon-128px.png">
+    <meta name="msapplication-TileImage" content="images/icons/icon-72px.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 40%;
+            width:80%;
+            margin-left: 10%;
+            display:none;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+
+        function initMap() {
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15.5,
+                center: {lat: 53.38108855193859, lng: -1.4801287651062012},
+            });
+            // Create an array of alphabetical characters used to label the markers.
+            var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+            // Add some markers to the map.
+            // Note: The code uses the JavaScript Array.prototype.map() method to
+            // create an array of markers based on a given "locations" array.
+            // The map() method here has nothing to do with the Google Maps API.
+            var markers = locations.map(function(location, i) {
+                return new google.maps.Marker({
+                    position: location,
+                    label: labels[i % labels.length],
+                });
+            });
+
+            // Add a marker clusterer to manage the markers.
+            var markerCluster = new MarkerClusterer(map, markers,
+                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+        }
+        var locations = [
+            //返回数据库中有的location经纬度，现在是写死的
+            {lat: 53.38108855193859, lng: -1.4801287651062012},
+            {lat: 53.3849, lng: -1.485},
+            {lat: 53.3899, lng: -1.489},
+            {lat: 53.3856, lng: -1.480},
+            {lat: 53.3877, lng: -1.487},
+            {lat: 53.3821, lng: -1.4853},
+            {lat: 53.3828, lng: -1.482},
+
+        ]
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs3iLMC7PtL8BO71l8iJ_WqaUX1fiN-Xc&callback=initMap&language=en-US">
+    </script>
+    <script>
+        function changetip(value){
+            console.log(value)
+            if (value == 1){
+                document.getElementById("searchbox2").type = "date";
+                document.getElementById("selectbutton").innerHTML = "Date";
+                document.getElementById("map").style.display = "none";
+
+            }else if (value == 2){
+                document.getElementById("searchbox2").type = "text";
+                document.getElementById("searchbox2").value = "";
+                document.getElementById("selectbutton").innerHTML = "Location";
+                document.getElementById("map").style.display = "block";
+            }else {
+                document.getElementById("searchbox2").type = "text";
+                document.getElementById("searchbox2").value = "";
+                document.getElementById("selectbutton").innerHTML = "Event";
+                document.getElementById("map").style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body onload="initDB();loadAllEvent()">
+<!--navbar-->
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            Welcome to Music Festival
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="Event">Event</a> </li>
+            <li><a href="Story">Story</a> </li>
+            <li><a href="">Your Profile</a> </li>
+            <li><a href="/signup" id="signup">Log out</a></li>
+        </ul>
+
+    </div>
+</div>
+<!--navbar end-->
+<!--Carousel-->
+<div id="myCarousel" class="carousel slide" style="margin-top: 0;">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <img class="img-broad" src="/images/broad/broad2.jpeg" alt="First slide">
+        </div>
+        <div class="item">
+            <img class="img-broad" src="/images/broad/broad3.jpg" alt="Second slide">
+        </div>
+        <div class="item">
+            <img class="img-broad" src="/images/broad/broad5.jpg" alt="Third slide">
+        </div>
+    </div>
+    <a class="carousel-control left" href="#myCarousel"
+       data-slide="prev"> <span _ngcontent-c3="" aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
+    <a class="carousel-control right" href="#myCarousel"
+       data-slide="next">&rsaquo;</a>
+</div>
+
+<!--Search Bar-->
+<div id="searchEvent" class="main-screen">
+
+    <div class="row" >
+        <div class="col-lg-6" >
+            <div class="input-group input-group-lg">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" id="selectbutton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"
+                            onchange="changetip(this.value)">
+                        Category <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a onclick="changetip(0)">Event</a></li>
+                        <li><a onclick="changetip(1)">Date</a></li>
+                        <li><a onclick="changetip(2)">Location</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+                <input type="text" id="searchbox2" class="form-control" aria-label="...">
+                <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onclick="searchEvents()">Search!</button>
+      </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div>
+
+
+</div>
+<div id="map" ></div>
+
+    <!--content-->
+    <div id="container" class="main-page" style="margin-bottom: 2%"></div>
+<!--Navbar Bottom-->
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="background-color: #985f0d;opacity: 0.8;">
+    <div class="container-fluid">
+        <div class="footer">
+            <li><a href="createevent" style="color: #fff">Create Event</a></li>
+
+        </div>
+    </div>
+</nav>
+<script src="/javascripts/app.js"></script>
+<script src="/javascripts/database.js"></script>
+<script src="/javascripts/idb.js"></script>
+</body>
+</html>
